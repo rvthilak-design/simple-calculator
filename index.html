@@ -1,118 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPEDOCTYPE html>
 <html>
-<meta name="description" content="Simple calculator website by rvthilak-design.">
-<meta name="keywords" content="rvthilak, calculator, simple calculator, github">
-<meta name="author" content="rvthilak-design">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<style>
-    body {
-        
-        background-image: linear-gradient(to right, lightblue, lightseagreen);
-        color: white;
-    }
-
-    mark {
-        background-color: white;
-        color: black;
-    }
-
-    h1 {
-        font-family: 'Arial', sans-serif;
-        font-size: 48px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        text-align: center;
-    }
-
-     .btn {
-        font-size: 20px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-     .btn:hover {
-        background-color: #555;
-        color: white;
-    }
-
-     input[type="text"] {
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        margin-right: 10px;
-    }
-
-     output {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { background: linear-gradient(to right, lightblue, lightseagreen); color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
+        .calc-box { background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); width: 300px; text-align: center; }
+        h1 { color: #333; font-size: 28px; margin-bottom: 15px; }
+        input { width: 100%; height: 50px; font-size: 24px; text-align: right; margin-bottom: 15px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; color: black; }
+        .btn-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .btn { font-size: 20px; padding: 15px; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
 <body>
-
-<h1> kalculator</h1>
-
-    <br><br><br><br><br>
-
-    <p id="demo"></p>
-    <p id="demo2"></p>
-    <p id="demo3"></p>
-    
-     <button onclick="myFunction()" class="btn btn-danger" id="btn1">Click me</button>
-
-      <button onclick="myFunction2()" class="btn btn-warning" id="btn2">Subtract</button>
-
-      <button onclick="myFunction3()" class="btn btn-success" id="btn3">Multiply</button>
-
-        <br><br><br><br><br>
-        <input type="text" id="num1" placeholder="Enter first number">
-        <input type="text" id="num2" placeholder="Enter second number">
-        <output id="result"></output>
-        
-
-        <button onclick="calculateAdd()" class="btn btn-primary">+</button>
-        <button onclick="calculateSubtract()" class="btn btn-primary">-</button>
-        <button onclick="calculateMultiply()" class="btn btn-primary">*</button>
-        <button onclick="calculateDivide()" class="btn btn-primary">/</button>
+    <div class="calc-box">
+        <h1>Calculator</h1>
+        <input type="text" id="screen" readonly placeholder="0">
+        <div class="btn-row">
+            <button class="btn btn-danger" onclick="clearScreen()">C</button>
+            <button class="btn btn-secondary" onclick="press('/')">/</button>
+            <button class="btn btn-secondary" onclick="press('*')">*</button>
+            <button class="btn btn-secondary" onclick="press('-')">-</button>
+            <button class="btn btn-light text-dark" onclick="press('7')">7</button>
+            <button class="btn btn-light text-dark" onclick="press('8')">8</button>
+            <button class="btn btn-light text-dark" onclick="press('9')">9</button>
+            <button class="btn btn-primary" onclick="press('+')">+</button>
+            <button class="btn btn-light text-dark" onclick="press('4')">4</button>
+            <button class="btn btn-light text-dark" onclick="press('5')">5</button>
+            <button class="btn btn-light text-dark" onclick="press('6')">6</button>
+            <button class="btn btn-success" style="grid-row: span 2; height: 100%;" onclick="calculate()">=</button>
+            <button class="btn btn-light text-dark" onclick="press('1')">1</button>
+            <button class="btn btn-light text-dark" onclick="press('2')">2</button>
+            <button class="btn btn-light text-dark" onclick="press('3')">3</button>
+            <button class="btn btn-light text-dark" style="grid-column: span 3;" onclick="press('0')">0</button>
+        </div>
+    </div>
 
     <script>
-        function myFunction() {
-            var x = 5;
-            var y = 2;
-            var z = x + y;
-            document.getElementById("btn1").innerHTML = z;
-
-            
-        }
-
-        function myFunction2() {
-            var x = 5;
-            var y = 2;
-            var z = x - y;
-            document.getElementById("btn2").innerHTML = z;
-        }
-
-        function myFunction3() {
-            var x = 5;
-            var y = 2;
-            var z = x * y;
-            document.getElementById("btn3").innerHTML = z;
-        }
-
-
-        function calculateAdd() {
-            var x = parseFloat(document.getElementById("num1").value);
-            var y = parseFloat(document.getElementById("num2").value);
-            var result = x + y;
-            document.getElementById("result").textContent = result;
-        }
-        
-
+        let screen = document.getElementById('screen');
+        function press(value) { screen.value += value; }
+        function clearScreen() { screen.value = ''; }
+        function calculate() { try { screen.value = eval(screen.value); } catch(err) { screen.value = 'Error'; } }
     </script>
-
 </body>
-
 </html>
