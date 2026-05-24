@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    body {
+        
+        background-image: linear-gradient(to right, lightblue, lightseagreen);
+        color: white;
+    }
+
+    mark {
+        background-color: white;
+        color: black;
+    }
+
+    h1 {
+        font-family: 'Arial', sans-serif;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+     .btn {
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+     .btn:hover {
+        background-color: #555;
+        color: white;
+    }
+
+     input[type="text"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-right: 10px;
+    }
+
+     output {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+
+</style>
+<body>
+
+<h1> kalculator</h1>
+
+    <br><br><br><br><br>
+
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    
+     <button onclick="myFunction()" class="btn btn-danger" id="btn1">Click me</button>
+
+      <button onclick="myFunction2()" class="btn btn-warning" id="btn2">Subtract</button>
+
+      <button onclick="myFunction3()" class="btn btn-success" id="btn3">Multiply</button>
+
+        <br><br><br><br><br>
+        <input type="text" id="num1" placeholder="Enter first number">
+        <input type="text" id="num2" placeholder="Enter second number">
+        <output id="result"></output>
+        
+
+        <button onclick="calculateAdd()" class="btn btn-primary">+</button>
+        <button onclick="calculateSubtract()" class="btn btn-primary">-</button>
+        <button onclick="calculateMultiply()" class="btn btn-primary">*</button>
+        <button onclick="calculateDivide()" class="btn btn-primary">/</button>
+
+    <script>
+        function myFunction() {
+            var x = 5;
+            var y = 2;
+            var z = x + y;
+            document.getElementById("btn1").innerHTML = z;
+
+            
+        }
+
+        function myFunction2() {
+            var x = 5;
+            var y = 2;
+            var z = x - y;
+            document.getElementById("btn2").innerHTML = z;
+        }
+
+        function myFunction3() {
+            var x = 5;
+            var y = 2;
+            var z = x * y;
+            document.getElementById("btn3").innerHTML = z;
+        }
+
+
+        function calculateAdd() {
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x + y;
+            document.getElementById("result").textContent = result;
+        }
+        
+
+    </script>
+
+</body>
+
+</html>
